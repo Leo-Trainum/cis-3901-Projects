@@ -2,7 +2,8 @@
 
 ## 1. What this is
 
-The template for your **CIS-3901 Data Visualization and Presentation** Challenge Projects (Fall 2026, Catawba College): R scripts, Quarto reports and Quarto slides for the Fairness Data and Sports Data projects, published as one website with GitHub Pages. See the finished example at <https://acintron-cc.github.io/cis-3901-202710/>.
+The template for your **CIS-3901 Data Visualization and Presentation** Challenge Projects (Fall 2026, Catawba College): R scripts, Quarto reports and Quarto slides for the Fairness Data and Sports Data projects, 
+published as one website with GitHub Pages. See the finished example at <https://acintron-cc.github.io/cis-3901-202710/>.
 
 ## 2. Get your own copy
 
