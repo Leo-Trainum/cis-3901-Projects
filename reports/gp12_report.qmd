@@ -62,9 +62,8 @@ WRITE: Fairness is acs_income_ns and has 5000 rows of 14 columns with one row be
 
 **My group:** income **My outcome:** income >= 50k
 
-**Question A:** WRITE: "Of each income (group), what share has and income >= 50k (outcome)?"
-**Question B:** WRITE: "Of everyone with and income >= 50k (outcome), what share is each
-income (group)?"
+**Question A:** Of the two income groups, we cant tell which is larger from this graph because both sections show the share of those groups that fall inside themselves
+**Question B:** Same as question A, we cant answer yet because both groups are 100% their groups.
 
 ### A0 · My group and my outcome
 
@@ -103,7 +102,7 @@ I would that people who make less than 50k would be the higher group but I can't
 #| ref.label: a2
 #| echo: true
 #| fig-cap: "Rate in each group, with ± one standard error and the group size."
-#| fig-alt: "WRITE: the plot shows the rat which each group meets the outcome (income >= 50k) but there are somany groups for some reason you cant read the data on the graph"
+#| fig-alt: "WRITE: Because there is a definite number of people in each group the graph doesnt have noticable standard error bars"
 ```
 
 ```{r}
@@ -136,7 +135,7 @@ The zoomed plot's Lie Factor (largest vs smallest group) is
 
 WRITE (3–4 sentences): What does each version show and hide? Explain the Lie
 Factor in your own words. Which version would you publish, and why?
-The first one a3_counts shows the most, with each income group being shown, I would publish that one if i was forced to publish one. But I wouldn't want to publish any of them.
+The first one a3_counts shows the most, with each income group being shown, I would publish that one if i had to publish one.
 
 ### A4 · Each group's share of everyone with the outcome (question B)
 
@@ -156,7 +155,7 @@ The first one a3_counts shows the most, with each income group being shown, I wo
 WRITE (2–3 sentences): Do question A (A1, A2) and question B (A4) point in the
 same direction? Why or why not? Which question does your Module 11 question
 need?
-Because of how the graphs are, it is difficult to tell if the questions point in the same direction. this is because each graphs readability is poor along with the graph design making telling if the graphs relate nearly impossible.
+they do all point in the same direction, that being that a greater number of people make under 50k than over 50k.
 
 ## Part B · Sports
 
@@ -199,7 +198,7 @@ WRITE (2 sentences): The plot shows the share of each group of shots that happen
 #| ref.label: b2
 #| echo: true
 #| fig-cap: "Mean in each group, with ± one standard error and group size."
-#| fig-alt: "WRITE: This plot shows the mean number of shots that happened in each period."
+#| fig-alt: "WRITE: This plot shows the  number of shots that happened in each period."
 ```
 
 ```{r}
@@ -214,7 +213,7 @@ WRITE (2 sentences): The plot shows the share of each group of shots that happen
 knitr::kable(b2_summary, digits = 3)
 ```
 
-WRITE (2–3 sentences): the first three period groups have very close means, with periods 4, 5, and 6 having exponentially less shots. I can't comment on the sd and se because I couldn't get those to show up.
+WRITE (2–3 sentences): the first three period groups have very close totals, with periods 4, 5, and 6 having exponentially less shots. I can't comment on the sd and se because I couldn't get those to show up. Likely because there is no variation in the groups, just concrete numbers
 
 ### B3 · Zoom or filter?
 
@@ -246,7 +245,7 @@ Readers would conclude the same thing from both graphs because they came out ide
 #| ref.label: b4
 #| echo: true
 #| fig-cap: "Each group's share of everyone with the outcome."
-#| fig-alt: "WRITE: Shows the share of shots that happened in period 3, in period 3, which is all of them."
+#| fig-alt: "WRITE: Shows a large block that I was unsure how to remedy, shows that all shots in periods 1,2 or 3 happened in those periods"
 ```
 
 ```{r}
@@ -254,7 +253,7 @@ Readers would conclude the same thing from both graphs because they came out ide
 #| include: false
 ```
 
-WRITE (2 sentences): Compare with B1: It does give the same direction because both present the percentage of period 3 shots that occured during period 3.
+WRITE (2 sentences): Compare with B1: It does give the same direction because both present the percentage of period 3 shots that ocured during period 3.
 
 ## Checks
 

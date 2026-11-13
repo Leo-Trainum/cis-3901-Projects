@@ -106,8 +106,8 @@ glimpse(sports)
 ## ---- a0 ----
 a_data <- fairness %>%
   mutate(
-    group = income,
-    has_outcome = income >= "50000"
+    group = ifelse(income >= 50000, "Above 50k", "Below 50k"),
+    has_outcome = income >= 50000
   )
 
 a_data %>%
@@ -229,12 +229,12 @@ check("A3",
 # Session 2, slide 9: groups down the side.
 ## ---- a4 ----
 a4_shares <- a_data %>%
-  filter(has_outcome) %>%
   count(group) %>%
   mutate(share = n / sum(n))
 
 a4 <- ggplot(a4_shares, aes(x = share, y = group)) +
   geom_col() +
+  scale_x_continuous(labels = scales::percent)
   labs(x = "Share of everyone with the outcome", y = NULL)
 
 show_plot(a4)
@@ -261,13 +261,14 @@ check("A4",
 b_data <- sports %>%
   mutate(
     group = period,
-    has_outcome = period %in% 3,
-    value = 2
+    has_outcome = period == 3,
+    value = period_seconds_remaining
   )
 
 b_data %>%
   count(group, has_outcome) %>%
   print(n = Inf)
+
 summary(b_data$value)
 
 ## ---- b0-check ----
@@ -342,7 +343,7 @@ b3_table <- b_data %>%
   arrange(desc(n))
 b3_table
 
-b3_start <- 0
+b3_start <- floor(min(b3_table$n) / 2)
 
 b3_counts <- ggplot(b_data, aes(y = group)) +
   geom_bar() +
