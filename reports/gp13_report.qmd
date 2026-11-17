@@ -1,0 +1,370 @@
+---
+title: "Guided Project: Scales and Facets"
+subtitle: "CIS-3901 · Module 13"
+author: "Leo"
+date: 11/16/26
+format:
+  html:
+    toc: true
+    code-fold: false
+    embed-resources: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+::: {.callout-important}
+## Edit the code in the script. The report and the slides only read it.
+
+The code lives in `scripts/gp13_scales_facets.R`. Your words (findings,
+headlines, limits) live in the report and the slides. Keep the code chunks
+here empty: on render, each one runs the script's code, so code typed into
+them is ignored. Fix the code in the script.
+:::
+
+```{r}
+#| label: project-root
+#| include: false
+# The report runs from reports/; this makes the code run from the project
+# folder, so the script's paths (data/...) work here too.
+knitr::opts_knit$set(root.dir = normalizePath(".."))
+```
+
+```{r}
+#| label: read-script
+#| include: false
+# All the code lives in the script. Each empty chunk below takes the code
+# with that "## ---- name ----" label there, and shows it with its output.
+knitr::read_chunk("scripts/gp13_scales_facets.R")
+```
+
+```{r}
+#| label: setup
+#| include: false
+```
+
+```{r}
+#| label: helpers
+#| include: false
+```
+
+<!--
+How to use this template
+- Replace every line that starts with "WRITE:" with your own sentences.
+- Replace "Your Name" above (a first name or initials is fine: this page is
+  public).
+- Replace each fig-alt with one sentence describing what YOUR plot shows.
+- Change code only in the script, never here: code typed into a chunk here
+  is ignored on render (the chunk runs the script's code).
+- Render, then commit and push (Guided Project page).
+- Draft: tasks 0-5 with your WRITE answers. Final: revise with Module 14's
+  ideas and fill in the Revision log near the end.
+-->
+
+## My data
+
+WRITE: Name your Fairness dataset and your Sports dataset. For each: what one
+row is, how many rows, and where the data come from (cite them in
+References).
+
+```{r}
+#| label: data
+#| echo: true
+```
+
+## Part A · Fairness
+
+### A0 · See it update
+
+```{r}
+#| label: fig-a0
+#| ref.label: a0
+#| echo: true
+#| fig-cap: "My first plot: a count of one of my Fairness columns."
+#| fig-alt: "Bar chart counting the rows in each group of one column."
+```
+
+```{r}
+#| label: a0-check
+#| include: false
+```
+
+WRITE (1 sentence): Did your title change show up here and in your slides?
+
+### A1 · Label it
+
+```{r}
+#| label: fig-a1
+#| ref.label: a1
+#| echo: true
+#| fig-cap: "Share of each group with the outcome, labeled for a reader."
+#| fig-alt: "this shows what proportion of people who make above 50k a year, make above 50k a year."
+```
+
+```{r}
+#| label: a1-check
+#| include: false
+```
+
+WRITE (2 sentences): the proportion lable is what i was trying to change but couldn't figure it out.
+
+### A2 · Choose a scale
+
+```{r}
+#| label: fig-a2
+#| ref.label: a2
+#| echo: true
+#| fig-cap: "My scale choice."
+#| fig-alt: "This shows income based on a logarithmoic scale so that the more bunched up lower income is more spread out."
+```
+
+```{r}
+#| label: a2-check
+#| include: false
+```
+
+WRITE (2–3 sentences): I chose a logarithmic scale because the majority of nc residents made less than 50k so using a log scale spreads those income values put.
+
+### A3 · Facet it: fixed or free
+
+```{r}
+#| label: fig-a3
+#| ref.label: a3
+#| echo: true
+#| fig-cap: "The same rates in panels: fixed and free y-axes."
+#| fig-subcap: ["Fixed", "Free"]
+#| fig-alt: "Both plots show the same date but free has the scales rewritten for each panel."
+#| layout: [[1, 1]]
+```
+
+```{r}
+#| label: a3-chosen
+#| include: false
+```
+
+```{r}
+#| label: tbl-a3
+#| tbl-cap: "Each group's n and rate, by panel."
+#| echo: false
+knitr::kable(a3_rates, digits = 3)
+```
+
+```{r}
+#| label: a3-check
+#| include: false
+```
+
+WRITE (3–4 sentences):Fixed because it keeps the scale between the male and female panels the same which lets viewers compare the rates across the panels easier. 
+### A4 · Compared to what?
+
+```{r}
+#| label: fig-a4
+#| ref.label: a4
+#| echo: true
+#| fig-cap: "Two groups: individual values and resampled means, same axes."
+#| fig-alt: "This plot shows income by gender, compared with the means of each genders income."
+```
+
+```{r}
+#| label: a4-check
+#| include: false
+```
+
+WRITE (2–3 sentences): the colouds overlap heavily. meaning that across genders, many people have similar income.
+### A5 · Color for every reader
+
+```{r}
+#| label: fig-a5
+#| ref.label: [a5, a5-simulated]
+#| echo: true
+#| fig-cap: "My colors, with a second cue, and how a reader with red-green color blindness might see them."
+#| fig-subcap: ["My plot", "Red-green (deuteranopia), simulated"]
+#| fig-alt:
+#|   - "This plot shows the count of nc residents with each marital status"
+#|   - "The same plot in the colors a reader with red-green color blindness (deuteranopia) might see."
+#| layout-ncol: 2
+```
+
+```{r}
+#| label: a5-colors
+#| echo: true
+```
+
+```{r}
+#| label: fig-a5-views
+#| ref.label: a5-other-views
+#| echo: true
+#| fig-cap: "The other two simulated views."
+#| fig-subcap: ["Red-green (protanopia), simulated", "Blue-yellow (approximate), simulated"]
+#| fig-alt:
+#|   - "The same plot in the colors a reader with red-green color blindness (protanopia) might see."
+#|   - "The same plot in the colors a reader with blue-yellow color blindness might see (an approximation)."
+#| layout-ncol: 2
+```
+
+```{r}
+#| label: a5-check
+#| include: false
+```
+
+WRITE (2–4 sentences): Explain your colors. Say which column you colored by
+and why. If your first choice failed the color check, say what you changed:
+fewer categories, grouping rare ones, or panels. Then look at your simulated
+plot: can you still tell the categories apart?
+My colors go from blue to green and are colored by the marital_status column. At first the color check failed so I grouped the separated and widowed values together as they had the smallest populations. Since there were now fewer categories the color check passed.
+## Part B · Sports
+
+### B1 · Label it
+
+```{r}
+#| label: fig-b1
+#| ref.label: b1
+#| echo: true
+#| fig-cap: "My Sports plot, labeled for a reader."
+#| fig-alt: "This plot shows the percentage of shots that occured in period 3."
+```
+
+```{r}
+#| label: b1-check
+#| include: false
+```
+
+WRITE (2 sentences): The plot shows the percentage of shots that occured in period 3. the most helpful lable is the y axis label.
+
+### B2 · Choose a scale
+
+```{r}
+#| label: fig-b2
+#| ref.label: b2
+#| echo: true
+#| fig-cap: "My scale choice."
+#| fig-alt: "Shows a log scale of how many shots in each period"
+```
+
+```{r}
+#| label: b2-check
+#| include: false
+```
+
+WRITE (2–3 sentences): I chose a logarithmic scale because thats what I did for a3. It shows a standart count of how many shots occured in each period but it is spaced out odd due to the logarithmic scale.
+
+### B3 · Facet it: fixed or free
+
+```{r}
+#| label: fig-b3
+#| ref.label: b3
+#| echo: true
+#| fig-cap: "The same plot in panels: fixed and free y-axes."
+#| fig-subcap: ["Fixed", "Free"]
+#| fig-alt: "These plots show each period and the percentage that each shot outcome happend in that period"
+#| layout: [[1, 1]]
+```
+
+```{r}
+#| label: b3-check
+#| include: false
+```
+
+WRITE (3–4 sentences): Fixed or free? What does the reader gain, and what do
+they lose? Which panels are small, and what is their n? Differences, not
+causes.
+Fixed scale because it allows for easier comparisons across the panels. They lose the ability to have a scale that best fits each panel but we gain the ability to more easily compare each panel.
+
+### B4 · Compared to what?
+
+```{r}
+#| label: fig-b4
+#| ref.label: b4
+#| echo: true
+#| fig-cap: "Two groups: individual values and resampled means, same axes."
+#| fig-alt: "this plot shows the distance of each shot from the goal compared with if that shot was a goal or not."
+```
+
+```{r}
+#| label: b4-check
+#| include: false
+```
+
+WRITE (2–3 sentences): The clouds overlap heavily. the closer the shot was to the goal. Meaning that the closer the shot happened to the goal the more likely it was to score.
+### B5 · Color for every reader
+
+```{r}
+#| label: fig-b5
+#| ref.label: [b5, b5-simulated]
+#| echo: true
+#| fig-cap: "My colors, with a second cue, and how a reader with red-green color blindness might see them."
+#| fig-subcap: ["My plot", "Red-green (deuteranopia), simulated"]
+#| fig-alt:
+#|   - "This plot shows the count of how many shots happened in each period but with colorblind friendly colors"
+#|   - "The same plot in the colors a reader with red-green color blindness (deuteranopia) might see."
+#| layout-ncol: 2
+```
+
+```{r}
+#| label: b5-colors
+#| echo: true
+```
+
+```{r}
+#| label: fig-b5-views
+#| ref.label: b5-other-views
+#| echo: true
+#| fig-cap: "The other two simulated views."
+#| fig-subcap: ["Red-green (protanopia), simulated", "Blue-yellow (approximate), simulated"]
+#| fig-alt:
+#|   - "The same plot in the colors a reader with red-green color blindness (protanopia) might see."
+#|   - "The same plot in the colors a reader with blue-yellow color blindness might see (an approximation)."
+#| layout-ncol: 2
+```
+
+```{r}
+#| label: b5-check
+#| include: false
+```
+
+WRITE (2–4 sentences): 
+My colors are greens and blues and the color is dictated by period. If each period was shown, the color check failed. So, I had to combine period 4, 5, and 6 into one group so that the color check passed. Periods 4, 5, and 6 were the smalled catagories by far.
+
+## One thing I tried in my slides, and why
+
+WRITE (2–3 sentences):
+I was just trying to follow what the slides wanted us to do. We've never done a quartro slides before so I was unsure what went where at a lot of points.
+
+## Revision log
+
+<!-- Leave this empty for the draft; the page renders with it empty. -->
+
+Fill this in for the final: three to five changes to your report or slides.
+For each: what changed, why, and which idea from Module 14 it uses.
+
+| Change | Why | Module 14 idea |
+|---|---|---|
+| | | |
+| | | |
+| | | |
+
+## Checks
+
+```{r}
+#| label: checks-table
+#| include: false
+```
+
+```{r}
+#| label: tbl-checks
+#| tbl-cap: "Every task's check, at the time this page was rendered."
+#| echo: false
+knitr::kable(checks_table)
+```
+
+## AI use
+
+WRITE: I did not use AI for this module 13 project, i googled the hell out of things and it took forever.
+
+## References
+
+WRITE: APA references for your Fairness dataset (Fairlearn and the original
+source) and your Sports dataset (its SCORE page).
+fairness: acs_income_nc
+Sports: https://data.scorenetwork.org/hockey/nhl-shots.html
