@@ -111,8 +111,7 @@ figure. By default it shows your A3 plot, the version you chose. -->
 tell us. -->
 ```
 
-- WRITE: the difference the figure shows (differences, not causes).
-
+- WRITE: the difference the figure shows (differences, not causes).\
   A fixed scale because it keeps the scale between the male and female panels the same which lets viewers compare the rates across the panels easier. This fixed scale, while allowing for easier comparisons across panels, can mess up the scale of panels that have different values, making comparisons inside panels slightly more difficult.
 
 - WRITE: where the data come from, which groups are small (their n), and what the data can't tell us.\
