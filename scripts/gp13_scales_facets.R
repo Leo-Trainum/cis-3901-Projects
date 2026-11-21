@@ -521,7 +521,7 @@ a1 <- a1_base +
     title = "Over or Under 50k",
     subtitle = "What proportion of NC residents make 50k+",
     x = "Proportion",
-    y = NULL,
+    y = "Group",
   )
 
 show_plot(a1)
@@ -552,7 +552,7 @@ a2 <- NULL
    ggplot(aes(x = income)) +
    geom_histogram(bins = 30) +
    scale_x_log10(labels = scales::comma) +
-   labs(title = "Income Graph", x = "Income (units, log scale)", y = "Count")
+   labs(title = "Income Graph", x = "Income ($, log scale)", y = "Count")
 
 # YOUR TURN: one sentence. Why this scale for this column?
 a2_reason <- "The majority of people make under 50k so a log scale helps spread those incomes out."
@@ -596,7 +596,7 @@ a3_free <- NULL
    geom_col() +
    facet_wrap(vars(panel)) +
    scale_y_continuous(labels = scales::percent) +
-   labs(title = "Gender and Income", x = "Gender", y = "Rate of income (%)")
+   labs(title = "Gender and Income", x = "Gender and Group", y = "% of group")
  a3_free <- a3_fixed +
    facet_wrap(vars(panel), scales = "free_y")
 
@@ -711,18 +711,18 @@ b1_base <- b_data %>%
   ggplot(aes(x = rate, y = has_outcome)) +
   geom_col() +
   scale_x_continuous(labels = scales::percent) +
+  scale_y_discrete(labels = c("TRUE" = "Period 3","FALSE" = "Not Period 3")) +
   labs(
     x = "Share of total shots",
-    y = "Period 3",
-    fill = "Period"
+    y = "Period",
   )
 
 b1 <- b1_base +
   labs(
     title = "Share of shots in Period 3",
     subtitle = "Shows percentage of shots that happened in period 3",
-    x = "Percentage",
-    y = "True is Period 3"
+    x = "Percentage"
+    
   )
 
 show_plot(b1)
@@ -741,14 +741,14 @@ check("B1", c(
 ## ---- b2 ----
 b2 <- NULL
 b2 <- sports %>%
-  filter(period > 0) %>%
-  ggplot(aes(x = period)) +
+  filter(game_seconds_remaining > 0) %>%
+  ggplot(aes(x = game_seconds_remaining)) +
   geom_histogram(bins = 30) +
-  scale_x_log10(labels = scales::comma) +
-  labs(title = "Scaled Shots graph", x = "Shots (log scale)", y = "Count")
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Scaled Time Remaining graph", x = "Game Seconds Remainin", y = "Count")
 
 
-b2_reason <- "I dont know how much a log scale will do, there are only 6 values in the shots column (1-6)"
+b2_reason <- "A continuous scale is more beneficial because game_seconds_remaining is pretty evenly distributed"
 
 show_plot(b2)
 
@@ -791,7 +791,7 @@ b3_free <- b3_fixed +
 
 
 b3_choice <- "fixed"
-b3_reason <- "The two graphs look identical to me and i used fixed for a3"
+b3_reason <- "A fixed scales allows for easier comparisons between panels"
 
 show_plot(b3_fixed)
 show_plot(b3_free)
@@ -810,7 +810,7 @@ b4_clouds <- b_data %>%
   make_clouds(shot_outcome, shot_distance)
 
 b4 <- ggplot(b4_clouds, aes(x = group, y = value)) +
-  geom_jitter(width = 0.15, height = 0, alpha = 0.2) +
+  geom_jitter(width = 0.15, height = 0, alpha = 0.1) +
   facet_wrap(~ kind) +
   labs(
     title = "Shot Distance by Outcome, Resampled",
@@ -830,15 +830,15 @@ check("B4", c(todo_plot(b4, "b4"), todo_clouds(b4, "b4")))
 # you make, e.g. with fct_lump_n() or if_else()). Run color_check(b5).
 ## ---- b5 ----
 b5 <- b_data %>%
-  mutate(period = fct_lump_n(as.factor(period), n = 3)) %>%
-  ggplot(aes(y = period, fill = period)) +
+  mutate(period = as.factor(period)) %>%
+  ggplot(aes(y = shot_outcome, fill = shot_outcome)) +
   geom_bar() +
   scale_fill_viridis_d(end = 0.8) +
   labs(
-    title = "Period Shots",
+    title = "Shots Outcome Proportion",
     x = "Count",
-    y = "Period",
-    fill = "Period"
+    y = "Outcome",
+    fill = "Shot Outcome"
   )
 
 show_plot(b5)
@@ -864,3 +864,4 @@ checks_table <- tibble(
   status = unlist(checks)
 )
 checks_table
+

@@ -12,15 +12,18 @@ execute:
   echo: true
   warning: false
   message: false
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
-::: {.callout-important}
+::: callout-important
 ## Edit the code in the script. The report and the slides only read it.
 
 The code lives in `scripts/gp13_scales_facets.R`. Your words (findings,
-headlines, limits) live in the report and the slides. Keep the code chunks
-here empty: on render, each one runs the script's code, so code typed into
-them is ignored. Fix the code in the script.
+headlines, limits) live in the report and the slides. Keep the code
+chunks here empty: on render, each one runs the script's code, so code
+typed into them is ignored. Fix the code in the script.
 :::
 
 ```{r}
@@ -49,6 +52,7 @@ knitr::read_chunk("scripts/gp13_scales_facets.R")
 #| include: false
 ```
 
+```{=html}
 <!--
 How to use this template
 - Replace every line that starts with "WRITE:" with your own sentences.
@@ -61,12 +65,18 @@ How to use this template
 - Draft: tasks 0-5 with your WRITE answers. Final: revise with Module 14's
   ideas and fill in the Revision log near the end.
 -->
+```
 
 ## My data
 
-WRITE: Name your Fairness dataset and your Sports dataset. For each: what one
-row is, how many rows, and where the data come from (cite them in
-References).
+WRITE: Name your Fairness dataset and your Sports dataset. For each:
+what one row is, how many rows, and where the data come from (cite them
+in References).\
+\
+My fairness data set is the acs_income_nc data with 5,000 rows with each
+row representing one North Carolina resident. My sports data set is from
+SCORE Sports Data Repository and has 160,000 rows with each row
+representing a single shot from the National Hockey League.
 
 ```{r}
 #| label: data
@@ -90,7 +100,10 @@ References).
 #| include: false
 ```
 
-WRITE (1 sentence): Did your title change show up here and in your slides?
+WRITE (1 sentence): Did your title change show up here and in your
+slides?\
+I did change the title, from "First" to "Favorite" and yes the change
+appeared.
 
 ### A1 · Label it
 
@@ -107,7 +120,11 @@ WRITE (1 sentence): Did your title change show up here and in your slides?
 #| include: false
 ```
 
-WRITE (2 sentences): the proportion lable is what i was trying to change but couldn't figure it out.
+WRITE (2 sentences): This graph shows the proportions of North
+Carolinian's that make above and below \$50,000 a year. This is a
+relevant amount to split by because \$50,000 is about the average annual
+wage in North Carolina, so we can see the percentages of residents that
+are above and below that average.
 
 ### A2 · Choose a scale
 
@@ -124,7 +141,11 @@ WRITE (2 sentences): the proportion lable is what i was trying to change but cou
 #| include: false
 ```
 
-WRITE (2–3 sentences): I chose a logarithmic scale because the majority of nc residents made less than 50k so using a log scale spreads those income values put.
+WRITE (2–3 sentences): I chose a logarithmic scale because the majority
+of nc residents made less than 50k so using a log scale spreads those
+income values out. Speading out those income values allows for viewers
+to more easily distinguish how many residents make close to \$50,000 vs
+those who make much less.
 
 ### A3 · Facet it: fixed or free
 
@@ -155,8 +176,14 @@ knitr::kable(a3_rates, digits = 3)
 #| include: false
 ```
 
-WRITE (3–4 sentences):Fixed because it keeps the scale between the male and female panels the same which lets viewers compare the rates across the panels easier. 
-### A4 · Compared to what?
+WRITE (3–4 sentences): A fixed scale because it keeps the scale between
+the male and female panels the same which lets viewers compare the rates
+across the panels easier. This fixed scale, while allowing for easier
+comparisons across panels, can mess up the scale of panels that have
+different values, making comparisons inside panels slightly more
+difficult.
+
+\### A4 · Compared to what?
 
 ```{r}
 #| label: fig-a4
@@ -171,8 +198,13 @@ WRITE (3–4 sentences):Fixed because it keeps the scale between the male and fe
 #| include: false
 ```
 
-WRITE (2–3 sentences): the colouds overlap heavily. meaning that across genders, many people have similar income.
-### A5 · Color for every reader
+WRITE (2–3 sentences): The clouds overlap heavily. Meaning that across
+genders, many people have similar incomes. The re-sampled means being so
+low means that a LARGE majority of NC residents have incomes below
+\$25,000, which is off-putting considering that there are residents
+making over \$500,000.
+
+\### A5 · Color for every reader
 
 ```{r}
 #| label: fig-a5
@@ -208,12 +240,19 @@ WRITE (2–3 sentences): the colouds overlap heavily. meaning that across gender
 #| include: false
 ```
 
-WRITE (2–4 sentences): Explain your colors. Say which column you colored by
-and why. If your first choice failed the color check, say what you changed:
-fewer categories, grouping rare ones, or panels. Then look at your simulated
-plot: can you still tell the categories apart?
-My colors go from blue to green and are colored by the marital_status column. At first the color check failed so I grouped the separated and widowed values together as they had the smallest populations. Since there were now fewer categories the color check passed.
-## Part B · Sports
+WRITE (2–4 sentences): Explain your colors. Say which column you colored
+by and why. If your first choice failed the color check, say what you
+changed: fewer categories, grouping rare ones, or panels. Then look at
+your simulated plot: can you still tell the categories apart?
+
+My colors go from blue to green and are colored by the marital_status
+column because of the relatively low number of categories. This didn't
+pass the color check, but was extremely close. So, I used the facet lump
+to group together the smallest sections. After doing so, the color check
+passed. After reducing the number of categories, it is extremely easy to
+tell the categories apart.
+
+\## Part B · Sports
 
 ### B1 · Label it
 
@@ -230,7 +269,13 @@ My colors go from blue to green and are colored by the marital_status column. At
 #| include: false
 ```
 
-WRITE (2 sentences): The plot shows the percentage of shots that occured in period 3. the most helpful lable is the y axis label.
+WRITE (2 sentences): The plot shows the percentage of shots that
+occurred in period 3. The most helpful label for first time viewers is
+the labels of the groups on the y axis, showing views which groups is
+and isn't period 3. This graph is interesting because it shows that, in
+a hockey game, roughly 33% of shots occur in the final period, meaning
+that there isn't an increase in shots taken as the game gets closer to
+its end.
 
 ### B2 · Choose a scale
 
@@ -247,7 +292,10 @@ WRITE (2 sentences): The plot shows the percentage of shots that occured in peri
 #| include: false
 ```
 
-WRITE (2–3 sentences): I chose a logarithmic scale because thats what I did for a3. It shows a standart count of how many shots occured in each period but it is spaced out odd due to the logarithmic scale.
+WRITE (2–3 sentences): I chose a continuous scale for the column
+game_seconds_remaining because it's distribution is roughly even so a
+logarithmic scale wouldn't have given any meaningful insight and just
+made the graph harder to read for no reason.
 
 ### B3 · Facet it: fixed or free
 
@@ -266,10 +314,15 @@ WRITE (2–3 sentences): I chose a logarithmic scale because thats what I did fo
 #| include: false
 ```
 
-WRITE (3–4 sentences): Fixed or free? What does the reader gain, and what do
-they lose? Which panels are small, and what is their n? Differences, not
-causes.
-Fixed scale because it allows for easier comparisons across the panels. They lose the ability to have a scale that best fits each panel but we gain the ability to more easily compare each panel.
+WRITE (3–4 sentences): Fixed or free? What does the reader gain, and
+what do they lose? Which panels are small, and what is their n?
+Differences, not causes.
+
+A fixed scale because it allows for easier comparisons across the
+panels. They lose the ability to have a scale that best fits each panel
+but we gain the ability to more easily compare each panel. And since all
+the panels in the graph have similar proportions a fixed scales is more
+beneficial than a free scale.
 
 ### B4 · Compared to what?
 
@@ -286,8 +339,14 @@ Fixed scale because it allows for easier comparisons across the panels. They los
 #| include: false
 ```
 
-WRITE (2–3 sentences): The clouds overlap heavily. the closer the shot was to the goal. Meaning that the closer the shot happened to the goal the more likely it was to score.
-### B5 · Color for every reader
+WRITE (2–3 sentences): The clouds overlap heavily the closer the shot
+was to the goal. Meaning that the closer the shot happened to the goal
+the more likely it was to score. The re-sampled means shows the average
+distance from the goal that shots were taken for both shots that
+resulted in goals, and all shots no matter the shot outcome, with shots
+that resulted in goals being taken closer to the goal on average.
+
+\### B5 · Color for every reader
 
 ```{r}
 #| label: fig-b5
@@ -323,26 +382,31 @@ WRITE (2–3 sentences): The clouds overlap heavily. the closer the shot was to 
 #| include: false
 ```
 
-WRITE (2–4 sentences): 
-My colors are greens and blues and the color is dictated by period. If each period was shown, the color check failed. So, I had to combine period 4, 5, and 6 into one group so that the color check passed. Periods 4, 5, and 6 were the smalled catagories by far.
+WRITE (2–4 sentences): My colors are greens and blues and the color is
+dictated by period. If each period was shown, the color check would
+fail. So, I had to combine period 4, 5, and 6 into one group so that the
+color check passed. Periods 4, 5, and 6 were the smallest categories by
+far so combining them doesn't affect the overall message of the graph at
+all.
 
 ## One thing I tried in my slides, and why
 
-WRITE (2–3 sentences):
-I was just trying to follow what the slides wanted us to do. We've never done a quartro slides before so I was unsure what went where at a lot of points.
+WRITE (2–3 sentences): I tried to keep my text concise for the sildes so
+that it didn't clutter them up and viewers could focus on the graphs.
 
 ## Revision log
 
 <!-- Leave this empty for the draft; the page renders with it empty. -->
 
-Fill this in for the final: three to five changes to your report or slides.
-For each: what changed, why, and which idea from Module 14 it uses.
+Fill this in for the final: three to five changes to your report or
+slides. For each: what changed, why, and which idea from Module 14 it
+uses.
 
 | Change | Why | Module 14 idea |
-|---|---|---|
-| | | |
-| | | |
-| | | |
+|----|----|----|
+| I made labels in the graphs more informative | Labels being more accurate helps viewers better understand the graph. | Topic 3: the anatomy of a presentation. |
+| I changed my answers to the questions to better say why I designed my graphs how I did | Without explaing the graphs, viewers might not understand what they are seeing. | topic 4: explain a figure aloud |
+|  |  |  |
 
 ## Checks
 
@@ -360,11 +424,12 @@ knitr::kable(checks_table)
 
 ## AI use
 
-WRITE: I did not use AI for this module 13 project, i googled the hell out of things and it took forever.
+WRITE: I did not use AI for this module 13 project, i googled the hell
+out of things and it took forever.
 
 ## References
 
-WRITE: APA references for your Fairness dataset (Fairlearn and the original
-source) and your Sports dataset (its SCORE page).
-fairness: acs_income_nc
+WRITE: APA references for your Fairness dataset (Fairlearn and the
+original source) and your Sports dataset (its SCORE page). \
+fairness: acs_income_nc\
 Sports: https://data.scorenetwork.org/hockey/nhl-shots.html
