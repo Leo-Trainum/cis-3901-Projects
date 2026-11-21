@@ -430,6 +430,6 @@ out of things and it took forever.
 ## References
 
 WRITE: APA references for your Fairness dataset (Fairlearn and the
-original source) and your Sports dataset (its SCORE page). \
+original source) and your Sports dataset (its SCORE page).\
 fairness: acs_income_nc\
 Sports: https://data.scorenetwork.org/hockey/nhl-shots.html

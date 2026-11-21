@@ -115,7 +115,7 @@ tell us. -->
 
   A fixed scale because it keeps the scale between the male and female panels the same which lets viewers compare the rates across the panels easier. This fixed scale, while allowing for easier comparisons across panels, can mess up the scale of panels that have different values, making comparisons inside panels slightly more difficult.
 
-- WRITE: where the data come from, which groups are small (their n), and what the data can't tell us. \
+- WRITE: where the data come from, which groups are small (their n), and what the data can't tell us.\
   The data shown comes from the sex and income columns inside my acs_nc_income data. None of the groups have a small N value and the graph can't tell us a more detailed breakdown of incomes.
 
 ## Sources and AI use
